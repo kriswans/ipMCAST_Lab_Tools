@@ -1,0 +1,5 @@
+"#help" prints this help menu
+"#send": sends a file
+"#who": prints list of online users
+"#exit": exits the sender program
+"#log": print the chatlog
