@@ -1,0 +1,37 @@
+	-----HELP-----
+
+-h:	prints this help menu
+
+transmit -t:
+-T:	perform traffic test
+
+variables for traffic test:
+-s:	packets to send (default=2000)
+-p:	packet size -p (default=1500)
+-l:	packets per loop (default=100)
+-P:	loop pause -P (default=1)
+
+recieve -r:
+-d:	decode recieved message (default=does not decode message)
+
+example 1:
+ 
+Send 50000 256 Byte packets to group 226.7.8.9 on UDP port 3456. Burst for 100 packets and pause for .01 seconds between bursts:
+
+sender:
+.\mcast_tester.py -t 226.7.8.9 3456 -T -p 256 -l 100 -P .01 -s 50000
+
+reciever:
+.\mcast_tester.py -r 226.7.8.9 3456
+
+
+example 2:
+Send a text message: "Hola Mundo!" to group 228.1.1.1 on UDP port 7766. Reciever to decode message.
+
+sender:
+.\mcast_tester.py -t 228.1.1.1 7766 -m 'Hola Mundo!'
+
+reciever:
+.\mcast_tester.py -r 228.1.1.1 7766 -d
+
+	-----END-----
