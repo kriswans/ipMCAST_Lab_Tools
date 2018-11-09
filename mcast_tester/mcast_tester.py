@@ -71,7 +71,7 @@ def RX(LOGMSG_GRP,LOGMSG_PORT,decode=False):
                     j+=1
 
                 if (i%(20*packets))==0:
-                    avg_Mbps=(sum(avg)/len(avg))/1000000
+                    avg_Mbps=round((sum(avg)/len(avg))/1000000,1)
                     print(str(avg_Mbps)+" is the average Mbps recieved for this entire test run.\n")
                     avg_loss=(sum(loss_list)/len(loss_list))*100
                     print(str(avg_loss)+"% is the percent packet loss for the entire test run.\n")
@@ -80,7 +80,7 @@ def RX(LOGMSG_GRP,LOGMSG_PORT,decode=False):
 
                 if (i%(200*packets))==0 :
                     if len(avg) > 11:
-                        last_5_sample_avg=(sum(avg[-11:-1])/len(avg[-11:-1]))/1000000
+                        last_5_sample_avg=round((sum(avg[-11:-1])/len(avg[-11:-1]))/1000000,1)
                         print('\n\n\n'+str(last_5_sample_avg)+" is the average recieved Mbps of last 10 samples.\n\n\n")
 
 
@@ -118,11 +118,11 @@ def TX(LOGMSG_GRP,LOGMSG_PORT,test,packetsize,limit,pause,pts,message=None):
                     avg.append(x)
             i+=1
             if (i%(20*limit))==0:
-                avg_Mbps=(sum(avg)/len(avg))/1000000
+                avg_Mbps=round((sum(avg)/len(avg))/1000000,1)
                 print(str(avg_Mbps)+" is the average Mbps sent for this entire test run. "+str(i)+" total packets sent.")
             if (i%(200*limit))==0 :
                 if len(avg) > 11:
-                    last_5_sample_avg=(sum(avg[-101:-1])/len(avg[-101:-1]))/1000000
+                    last_5_sample_avg=round((sum(avg[-101:-1])/len(avg[-101:-1]))/1000000,1)
                     print('\n\n\n'+str(last_5_sample_avg)+" is the average sent Mbps of last 100 samples.\n\n\n")
 
     else:
